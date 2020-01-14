@@ -2,10 +2,22 @@
 
 import '../utilities/constants.dart';
 import '../utilities/constants.dart';
+import '../utilities/constants.dart';
+import '../utilities/constants.dart';
 import 'location.dart';
 import 'networking.dart';
 
 class WeatherModel {
+
+
+  Future<dynamic> getCityWeather(String cityName) async {
+    var url = '$kOpenWeatherMapUrl?q=$cityName&appid=$kApiKey&units=metric';
+    NetworkHelper networkHelper = NetworkHelper(url: url);
+
+    var weatherData = await networkHelper.getData();
+    return weatherData;
+  }
+
 
   Future<dynamic> getLocationWeather() async {
     Location location = Location();
