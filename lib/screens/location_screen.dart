@@ -69,7 +69,10 @@ class _LocationScreenState extends State<LocationScreen> {
                   FlatButton(
                     onPressed: () async {
                       var weatherData = await weatherModel.getLocationWeather();
-                      updateUI(weatherData);
+                      setState(() {
+                        updateUI(weatherData);
+                      });
+
                     },
                     child: Icon(
                       Icons.near_me,
@@ -88,7 +91,9 @@ class _LocationScreenState extends State<LocationScreen> {
                         print(typedCityName);
                         var weatherData = await weatherModel.getCityWeather(typedCityName);
                         print(weatherData);
-                        updateUI(weatherData);
+                        setState(() {
+                          updateUI(weatherData);
+                        });
                       }
                     },
                     child: Icon(
